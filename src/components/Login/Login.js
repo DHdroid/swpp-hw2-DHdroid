@@ -17,7 +17,7 @@ class Login extends Component {
     }
     bhandleClick = () => {
         if(this.state.pw === "iluvswpp"&&this.state.email ==="swpp@snu.ac.kr") {
-            window.location+="articles"
+            window.location="/articles"
         } else {
             alert("Email or password is wrong");
         }
