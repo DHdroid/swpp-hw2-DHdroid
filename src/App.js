@@ -8,8 +8,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Route path='/' exact component={Login}/>
-        <Route path='/articles' exact component={ArticleList}/>
+        <Switch>
+          <Route path='/' exact component={Login}/>
+          <Route path='/articles' exact component={ArticleList}/>
+          <Route render={()=> <div><h1>404</h1><p/><h2>Not Found</h2></div>}/>
+        </Switch>
       </div>
     </BrowserRouter>
   );
