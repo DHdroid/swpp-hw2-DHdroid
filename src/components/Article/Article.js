@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 
 class Article extends Component {
+    bhandleClick = () => {
+        window.location = '/articles/'+ this.props.number.toString();
+    }
     render(){
         return(
-            <div className="Article">
-                <p/>
-                <div>
-                {this.props.number}
-                <button>{this.props.title}</button>
-                {this.props.name}
-                </div>
-            </div>
+            <tr className="Article">
+                <td width='50' align='center'>{this.props.number}</td>
+                <td width='800' align='center'><button onClick={this.bhandleClick}>{this.props.title}</button></td>
+                <td width='150' align='center'>{this.props.name}</td>
+            </tr>
         );
     }
 }
