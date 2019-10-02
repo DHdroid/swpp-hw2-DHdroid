@@ -53,15 +53,10 @@ export const getArticle_ = (article) => {
 
 export const getArticle = (id) => {
     return dispatch =>{
-        return axios.get('/api/articles')
+        return axios.get('/api/articles/'+id)
             .then(res=>{
-                let ar;
-                res.data.forEach(element => {
-                    if(element.id == id) {
-                        ar = element;
-                    }
-                });
-                dispatch(getArticle_(ar));
+                
+                dispatch(getArticle_(res.data));
             });
     }
 }
@@ -123,7 +118,6 @@ export const editComment = (cm) => {
     return dispatch => {
         return axios.put('/api/comments/'+cm.id, cm)
             .then(res=> {
-                console.log(cm)
                 dispatch(editComment_(cm))}
                 );
     }
@@ -139,7 +133,7 @@ export const deleteArticle = (id) => {
 
 export const deleteComments = (cm) => {
     console.log(cm)       
-    cm.forEach(element=>{
+    cm.forEach(element=> {
         axios.delete('/api/comments/'+element.id)
     })
     return deleteComments_();
@@ -153,4 +147,12 @@ export const deleteComments_ = () => {
 
 export const deleteArticle_ = () => {
     return {type:actionTypes.DELETE_ARTICLE}
+}
+
+export const editArticle_ = (ar) => {
+    return {type:actionTypes.EDIT_ARTICLE, ar}
+}
+export const editArticle = (ar) => {
+    return dispatch => axios.put('/api/articles/'+ar.id, ar)
+        .then(res=>dispatch(editArticle_(ar)));
 }

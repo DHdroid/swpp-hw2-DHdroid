@@ -41,6 +41,8 @@ const detailReducer = (state = initialState, action) => {
             return {...state, artcicle:[]};
         case actionTypes.DELETE_COMMENTS:
             return {...state, comments:[]};
+        case actionTypes.EDIT_ARTICLE:
+            return {...state, artcicle:action.ar}
         default:
             break;
     }

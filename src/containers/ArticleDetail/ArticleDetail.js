@@ -39,9 +39,21 @@ class ArticleDetail extends Component {
     }
     deletehandleClick = () => {
         console.log(this.props.storedComments)
-        this.props.onDeleteComments(this.props.storedComments.filter((cm)=>{return cm.article_id==this.id}));
-        this.props.onDeleteArticle(this.id);
+        // this.props.onDeleteComments(this.props.storedComments.filter((cm)=>{return cm.article_id==this.id})); (fix it later)
+        this.props.onDeleteArticle(this.id); 
         window.location = '/articles';
+    }
+    edithandleClick = () => {
+        window.location = '/articles/'+this.id+'/edit';
+    }
+    author = () => {
+        let name = 'no name';
+        this.props.storedUsers.forEach(element=>{
+            if(element.id == this.props.storedArticle.author_id) {
+                name = element.name;
+            }
+        });
+        return name;
     }
     render() {
         const comments = this.props.storedComments.map((cm)=> {
@@ -53,15 +65,29 @@ class ArticleDetail extends Component {
             });
             return <div><Comment article_id={this.id} id={cm.id} author_id={cm.author_id} name={name} content={cm.content}/><p/></div>
         });
+        let button = () => {
+            if(this.props.storedArticle.author_id==1)
+            {
+                return(
+                    <span>
+                        <button id='edit-article-button' onClick={this.edithandleClick}>edit</button>
+                        <button id='delete-article-button' onClick = {this.deletehandleClick}>delete</button>
+                    </span>
+                )
+            }
+            else {
+                return;
+            }
+        }
         return(
             <div className="ArticleDetail" align='center'>
                 <table align='center' border='1'>
+                    <tr><td align = 'center' width = '800'><h2>{this.author()}</h2></td></tr>
                     <tr><td align = 'center' width = '800'><h1>{this.props.storedArticle.title}</h1></td></tr>
                     <tr><td width = '800' align = 'center'><h3>{this.props.storedArticle.content}</h3></td></tr>
                 </table>
                 <p/>
-                <button id='edit-article-button'>edit</button>
-                <button id='delete-article-button' onClick = {this.deletehandleClick}>delete</button>
+                {button()}
                 <button id='back-detail-article-button' onClick ={()=>{window.location='/articles'}}>Back</button>
                 <h2>- Comments -</h2>
                 <table align='center'>

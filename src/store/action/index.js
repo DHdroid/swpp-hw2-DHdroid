@@ -8,5 +8,6 @@ export {
     deleteComment,
     editComment,
     deleteArticle,
-    deleteComments
+    deleteComments,
+    editArticle
 } from './action';
