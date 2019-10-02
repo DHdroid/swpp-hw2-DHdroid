@@ -11,7 +11,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path='/' exact component={Login}/>
+          <Route path='/login' exact component={Login}/>
+          <Redirect exact from='/' to='/login'/>
           <Route path='/articles' exact component={ArticleList}/>
           <Route path='/articles/create' exact component={Create}/>
           <Route path='/articles/:id' exact component={ArticleDetail}/>

@@ -1,4 +1,5 @@
 import * as actionTypes from '../action/actionTypes';
+import { toUnicode } from 'punycode';
 const initialState = {
     article: {},
     comments: [],
@@ -21,6 +22,25 @@ const detailReducer = (state = initialState, action) => {
                 content: action.content
             }
             return {...state, comments:state.comments.concat(newComment)}
+        case actionTypes.DELETE_COMMENT:
+            const deletedcomment = state.comments.filter((cm)=>{
+                return cm.id != action.targetID;
+            })
+            return {...state, comments:deletedcomment}
+        case actionTypes.EDIT_COMMENT:
+            const modified = state.comments.map((cm)=>{
+                if(cm.id==action.cm.id) {
+                    return action.cm; 
+                }
+                else {
+                    return cm;
+                }
+            })
+            return {...state, comments:modified};
+        case actionTypes.DELETE_ARTICLE:
+            return {...state, artcicle:[]};
+        case actionTypes.DELETE_COMMENTS:
+            return {...state, comments:[]};
         default:
             break;
     }

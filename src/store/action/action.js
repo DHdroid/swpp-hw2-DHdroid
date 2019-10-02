@@ -94,6 +94,7 @@ export const postComment_ = (cm) => {
         content:cm.content
     }
 }
+
 export const postComment = (cm) => {
     return dispatch => {
         return axios.post('/api/comments',cm)
@@ -101,4 +102,55 @@ export const postComment = (cm) => {
                 dispatch(postComment_(res.data))
             })
     }
+}
+
+export const deleteComment = (id) => {
+    return dispatch =>{
+        return axios.delete('/api/comments/'+id)
+            .then(res=> dispatch(deleteComment_(id)));
+    };
+}
+
+export const deleteComment_ = (id) => {
+    return {type: actionTypes.DELETE_COMMENT, targetID: id};
+}
+
+export const editComment_ = (cm) => {
+    return {type:actionTypes.EDIT_COMMENT, cm};
+}
+
+export const editComment = (cm) => {
+    return dispatch => {
+        return axios.put('/api/comments/'+cm.id, cm)
+            .then(res=> {
+                console.log(cm)
+                dispatch(editComment_(cm))}
+                );
+    }
+}
+
+export const deleteArticle = (id) => {
+    return dispatch => {
+        return axios.delete('/api/articles/'+id)
+            .then(res=>{dispatch(deleteArticle_());})   
+    }
+}
+
+
+export const deleteComments = (cm) => {
+    console.log(cm)       
+    cm.forEach(element=>{
+        axios.delete('/api/comments/'+element.id)
+    })
+    return deleteComments_();
+}
+
+export const deleteComments_ = () => {
+    return dispatch => {
+        return {type:actionTypes.DELETE_COMMENTS}
+    }
+}
+
+export const deleteArticle_ = () => {
+    return {type:actionTypes.DELETE_ARTICLE}
 }

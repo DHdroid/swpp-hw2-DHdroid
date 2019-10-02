@@ -4,5 +4,9 @@ export {
     postArticle,
     getArticle,
     getComments,
-    postComment
+    postComment,
+    deleteComment,
+    editComment,
+    deleteArticle,
+    deleteComments
 } from './action';

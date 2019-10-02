@@ -4,3 +4,7 @@ export const POST_ARTICLE = 'POST_ARTICLE';
 export const GET_ARTICLE = 'GET_ARTICLE';
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const POST_COMMENT = 'POST_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';
+export const DELETE_COMMENTS = 'DELETE_COMMENTS';
