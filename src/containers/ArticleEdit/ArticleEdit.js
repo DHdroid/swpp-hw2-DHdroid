@@ -68,7 +68,7 @@ class ArticleEdit extends Component {
     }
     confirmhandleClick = (c) => {
         this.props.onEditArticle({...this.props.storedArticle, title:this.state.title, content:this.state.content});
-        window.location = '/articles';
+        window.location = '/articles/'+this.id;
     }
     author = () => {
         let name = 'no name';
@@ -100,9 +100,9 @@ class ArticleEdit extends Component {
                 else {
                     return(
                     <table align='center' border='1'>
-                    <tr><td align = 'center' width = '800'><h2>{this.author()}</h2></td></tr>
-                    <tr><td align = 'center' width = '800'><h1>{this.state.title}</h1></td></tr>
-                    <tr><td width = '800' align = 'center'><h3>{this.state.content}</h3></td></tr>
+                    <tr><td align = 'center' width = '800'><h2 id="article-author">{this.author()}</h2></td></tr>
+                    <tr><td align = 'center' width = '800'><h1 id="article-title">{this.state.title}</h1></td></tr>
+                    <tr><td width = '800' align = 'center'><h3 id="article-content">{this.state.content}</h3></td></tr>
                     </table>);
                 }
             }

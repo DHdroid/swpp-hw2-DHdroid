@@ -8,7 +8,6 @@ import ArticleDetail from './containers/ArticleDetail/ArticleDetail';
 import ArticleEdit from './containers/ArticleEdit/ArticleEdit';
 import { connect } from 'react-redux';
 import * as actionCreators from './store/action/index'
-import axios from 'axios';
 const mapStateToProps = state => {
   return {
       iflogin:state.lr.login

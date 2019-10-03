@@ -88,9 +88,9 @@ class ArticleDetail extends Component {
             <div className="ArticleDetail" align='center'>
                 <Logout/>
                 <table align='center' border='1'>
-                    <tr><td align = 'center' width = '800'><h2>{this.author()}</h2></td></tr>
-                    <tr><td align = 'center' width = '800'><h1>{this.props.storedArticle.title}</h1></td></tr>
-                    <tr><td width = '800' align = 'center'><h3>{this.props.storedArticle.content}</h3></td></tr>
+                    <tr><td align = 'center' width = '800'><h2 id="article-author">{this.author()}</h2></td></tr>
+                    <tr><td align = 'center' width = '800'><h1 id="article-title">{this.props.storedArticle.title}</h1></td></tr>
+                    <tr><td width = '800' align = 'center'><h3 id="article-content">{this.props.storedArticle.content}</h3></td></tr>
                 </table>
                 <p/>
                 {button()}

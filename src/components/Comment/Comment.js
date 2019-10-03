@@ -14,7 +14,7 @@ class Comment extends Component {
         if(content === '') {
             alert('You cannot create empty comment!');
         }
-        else {
+        else if(content !== null){
             this.props.onEditComment({id:this.props.id, article_id:this.props.article_id ,author_id:1, content:content})
         }
     };

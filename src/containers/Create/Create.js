@@ -66,9 +66,9 @@ class Create extends Component {
             else {
                 return(
                     <table align='center' border='1'>
-                    <tr><td align = 'center' width = '800'><h2>Software Lover</h2></td></tr>
-                    <tr><td align = 'center' width = '800'><h1>{this.state.title}</h1></td></tr>
-                    <tr><td width = '800' align = 'center'><h3>{this.state.content}</h3></td></tr>
+                    <tr><td align = 'center' width = '800'><h2 id="article-author">Software Lover</h2></td></tr>
+                    <tr><td align = 'center' width = '800'><h1 id="article-title">{this.state.title}</h1></td></tr>
+                    <tr><td width = '800' align = 'center'><h3 id="article-content">{this.state.content}</h3></td></tr>
                     </table>
                 );
             }
@@ -77,10 +77,10 @@ class Create extends Component {
         <div className="Create">
             <Logout/>
             {view()}
-            <p></p><button id="back-create-article-button" onClick={this.bhandleClick  }>back</button><p/>
+            <p></p><button id="back-create-article-button" onClick={this.bhandleClick}>back</button><p/>
             <button id="confirm-create-article-button" disabled ={!this.state.title||!this.state.content} onClick={this.chandleClick} disabled={!this.state.title||!this.state.content}>confirm</button><p/>
-            <button id="preview-create-article-button" disabled ={!this.state.title||!this.state.content} onClick={this.previewhandleClick}>preiew</button><p/>
-            <button id="write-create-article-button" onClick={this.writehandleClick}>write</button><p/>
+            <button id="preview-tab-article-button" disabled ={!this.state.title||!this.state.content} onClick={this.previewhandleClick}>preiew</button><p/>
+            <button id="write-tab-article-button" onClick={this.writehandleClick}>write</button><p/>
         </div>
         );
     }
