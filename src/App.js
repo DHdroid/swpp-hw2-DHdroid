@@ -6,8 +6,30 @@ import ArticleList from './containers/ArticleList/ArticleList';
 import Create from './containers/Create/Create';
 import ArticleDetail from './containers/ArticleDetail/ArticleDetail';
 import ArticleEdit from './containers/ArticleEdit/ArticleEdit';
-
-function App() {
+import { connect } from 'react-redux';
+import * as actionCreators from './store/action/index'
+import axios from 'axios';
+const mapStateToProps = state => {
+  return {
+      iflogin:state.lr.login
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+      onGetLogin: () => dispatch(actionCreators.getlogin())
+  }
+}
+function App(props) {
+  window.onload = function() {
+    props.onGetLogin();
+  }
+  console.log(props.iflogin)
+  if(props.iflogin===false&&window.location.toString().split('/').pop()!=='login') {
+    window.location = '/login';
+  }
+  else if(props.iflogin===true&&window.location.toString().split('/').pop()==='login') {
+    window.location = '/articles';
+  }
   return (
     <BrowserRouter>
       <div className="App">
@@ -25,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapStateToProps,mapDispatchToProps)(App);

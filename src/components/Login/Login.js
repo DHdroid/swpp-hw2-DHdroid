@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-
+import { connect } from 'react-redux';
+import * as actionCreators from '../../store/action/index'
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: () => dispatch(actionCreators.login())
+    }
+}
 class Login extends Component {
     state = {
         email: '',
@@ -17,7 +23,8 @@ class Login extends Component {
     }
     bhandleClick = () => {
         if(this.state.pw === "iluvswpp"&&this.state.email ==="swpp@snu.ac.kr") {
-            window.location="/articles"
+            this.props.onLogin();
+            //window.location="/articles"
         } else {
             alert("Email or password is wrong");
         }
@@ -36,4 +43,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default connect(null,mapDispatchToProps)(Login)

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/action/index'
+import Logout from '../../components/Logout/Logout'
 import { throwStatement } from '@babel/types';
 import { of } from 'rxjs';
 const mapStateToProps = state => {
@@ -107,6 +108,7 @@ class ArticleEdit extends Component {
             }
         return(
             <div className="ArticleEdit">
+                <Logout/>
                 {view()}
                 <p><button id='back-edit-article-button' onClick={this.backhandleClick}>back</button></p>
                 <p><button id='confirm-edit-article-button' disabled ={!this.state.title||!this.state.content} onClick={this.confirmhandleClick}>confirm</button></p>

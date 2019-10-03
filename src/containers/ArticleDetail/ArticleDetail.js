@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/action/index'
 import Comment from '../../components/Comment/Comment'
+import Logout from '../../components/Logout/Logout'
 const mapStateToProps = state => {
     return {
         storedArticle:state.dr.article,
@@ -36,6 +37,10 @@ class ArticleDetail extends Component {
     }
     shandleClick = () => {
         this.props.onPostComment({article_id:this.id, author_id:1, content:this.state.content});
+        this.setState({
+            ...this.state,
+            content:''
+        })
     }
     deletehandleClick = () => {
         console.log(this.props.storedComments)
@@ -81,6 +86,7 @@ class ArticleDetail extends Component {
         }
         return(
             <div className="ArticleDetail" align='center'>
+                <Logout/>
                 <table align='center' border='1'>
                     <tr><td align = 'center' width = '800'><h2>{this.author()}</h2></td></tr>
                     <tr><td align = 'center' width = '800'><h1>{this.props.storedArticle.title}</h1></td></tr>
@@ -92,7 +98,7 @@ class ArticleDetail extends Component {
                 <h2>- Comments -</h2>
                 <table align='center'>
                     <tr>
-                        <td><input id='new-comment-content-input' onChange = {this.shandleChange}/></td>
+                        <td><input id='new-comment-content-input' onChange = {this.shandleChange} value={this.state.content}/></td>
                         <td><button id='confirm-create-comment-button' disabled = {!this.state.content} onClick = {this.shandleClick}>confirm</button></td>
                     </tr>
                 </table>

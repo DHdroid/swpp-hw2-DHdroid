@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Article from '../../components/Article/Article';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/action/index'
+import Logout from '../../components/Logout/Logout'
 const mapStateToProps = state => {
     return {
         storedArticles:state.ar.articles,
@@ -32,6 +33,7 @@ class ArticleList extends Component {
         });
         return (
             <div className = "ArticleList" align='center'>
+                <Logout/>
                 <h1>ArticleList</h1>
                 <table border = "1" className = "articles">{articles}</table>
                 <p><button id = "create-article-button" onClick = {()=>{window.location='/articles/create'}}>Create</button></p>

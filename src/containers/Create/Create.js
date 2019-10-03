@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/action/index'
+import Logout from '../../components/Logout/Logout'
 const mapDispatchToProps = dispatch => {
     return {
         onPostArticle: (ar) => dispatch(actionCreators.postArticle(ar)),
@@ -8,7 +9,8 @@ const mapDispatchToProps = dispatch => {
 }
 const mapStateToProps = state => {
     return {
-        storedArticles:state.ar.articles
+        storedArticles:state.ar.articles,
+        storedid:state.ar.id
     };
 }
 class Create extends Component {
@@ -36,11 +38,11 @@ class Create extends Component {
         })
     }
     bhandleClick = () => {
-        window.location = '/articles'
+        window.location = '/articles';
     }
     chandleClick = () => {
         this.props.onPostArticle({title:this.state.title, content:this.state.content, author_id:1})
-        window.location = '/articles'
+            .then(res=>window.location = '/articles/'+this.props.storedid);
     }
     writehandleClick = (c) => {
         this.setState({
@@ -71,9 +73,9 @@ class Create extends Component {
                 );
             }
         }
-        console.log(this.state)
         return (
         <div className="Create">
+            <Logout/>
             {view()}
             <p></p><button id="back-create-article-button" onClick={this.bhandleClick  }>back</button><p/>
             <button id="confirm-create-article-button" disabled ={!this.state.title||!this.state.content} onClick={this.chandleClick} disabled={!this.state.title||!this.state.content}>confirm</button><p/>

@@ -3,20 +3,20 @@ import * as actionTypes from '../action/actionTypes';
 const initialState = {
     articles: [],
     comments: [],
-    users: []
+    users: [],
+    id: 0
 }
 
 const articleReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.POST_ARTICLE:
-            console.log(action.title)
             const newArticle = {
                 id: action.id,
                 title: action.title,
                 content: action.content,
                 author_id: action.author_id
             };
-            return {...state, articles: state.articles.concat(newArticle)}
+            return {...state, articles: state.articles.concat(newArticle), id:action.id}
         case actionTypes.GET_ALL_ARTICLE:
             return {...state, articles: action.articles}
         case actionTypes.GET_ALL_USER:

@@ -9,3 +9,6 @@ export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const DELETE_ARTICLE = 'DELETE_ARTICLE';
 export const DELETE_COMMENTS = 'DELETE_COMMENTS';
 export const EDIT_ARTICLE = 'EDIT_ARTICLE';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+export const GET_LOGIN = 'GET_LOGIN';

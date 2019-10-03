@@ -156,3 +156,20 @@ export const editArticle = (ar) => {
     return dispatch => axios.put('/api/articles/'+ar.id, ar)
         .then(res=>dispatch(editArticle_(ar)));
 }
+
+export const login = () => {
+    return dispatch => axios.patch('/api/user/1',{logged_in:true})
+        .then(res=>dispatch({type:actionTypes.LOGIN}));
+}
+
+export const logout = () => {
+    return dispatch => axios.patch('/api/user/1',{logged_in:false})
+        .then(res=>dispatch({type:actionTypes.LOGOUT}));
+}
+
+export const getlogin = () => {
+    return dispatch => axios.get('/api/user/1')
+        .then(res=>{
+            dispatch({type:actionTypes.GET_LOGIN,iflogin:res.data.logged_in})
+        })
+}
