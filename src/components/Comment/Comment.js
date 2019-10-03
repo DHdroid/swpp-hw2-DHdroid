@@ -11,10 +11,7 @@ const mapDispatchToProps = dispatch => {
 class Comment extends Component {
     edithandleClick = () => {
         let content = prompt('Input Content',this.props.content);
-        if(content === '') {
-            alert('You cannot create empty comment!');
-        }
-        else if(content !== null){
+        if(content !== null && content !==''){
             this.props.onEditComment({id:this.props.id, article_id:this.props.article_id ,author_id:1, content:content})
         }
     };

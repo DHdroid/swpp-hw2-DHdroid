@@ -39,7 +39,7 @@ function App(props) {
           <Route path='/articles/create' exact component={Create}/>
           <Route path='/articles/:id' exact component={ArticleDetail}/>
           <Route path='/articles/:id/edit' exact component={ArticleEdit}/>
-          <Route render={()=> <div><h1>404</h1><p/><h2>Not Found</h2></div>}/>
+          <Route render={()=> window.location ='/'}/>
         </Switch>
       </div>
     </BrowserRouter>

@@ -112,7 +112,7 @@ class ArticleEdit extends Component {
                 {view()}
                 <p><button id='back-edit-article-button' onClick={this.backhandleClick}>back</button></p>
                 <p><button id='confirm-edit-article-button' disabled ={!this.state.title||!this.state.content} onClick={this.confirmhandleClick}>confirm</button></p>
-                <p><button id='preview-tab-button' disabled ={!this.state.title||!this.state.content} onClick={this.previewhandleClick}>preview</button></p>
+                <p><button id='preview-tab-button' onClick={this.previewhandleClick}>preview</button></p>
                 <p><button id='write-tab-button' onClick={this.writehandleClick}>write</button></p>
             </div>
         )

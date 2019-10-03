@@ -79,7 +79,7 @@ class Create extends Component {
             {view()}
             <p></p><button id="back-create-article-button" onClick={this.bhandleClick}>back</button><p/>
             <button id="confirm-create-article-button" disabled ={!this.state.title||!this.state.content} onClick={this.chandleClick} disabled={!this.state.title||!this.state.content}>confirm</button><p/>
-            <button id="preview-tab-article-button" disabled ={!this.state.title||!this.state.content} onClick={this.previewhandleClick}>preiew</button><p/>
+            <button id="preview-tab-article-button" onClick={this.previewhandleClick}>preiew</button><p/>
             <button id="write-tab-article-button" onClick={this.writehandleClick}>write</button><p/>
         </div>
         );

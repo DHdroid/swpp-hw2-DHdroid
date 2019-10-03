@@ -36,7 +36,7 @@ class ArticleDetail extends Component {
         });
     }
     shandleClick = () => {
-        this.props.onPostComment({article_id:this.id, author_id:1, content:this.state.content});
+        this.props.onPostComment({article_id:parseInt(this.id), author_id:1, content:this.state.content});
         this.setState({
             ...this.state,
             content:''
