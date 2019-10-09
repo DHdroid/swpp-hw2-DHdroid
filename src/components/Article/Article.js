@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Article extends Component {
     bhandleClick = () => {
-        window.location = '/articles/'+ this.props.number.toString();
+        window.location.assign('/articles/'+ this.props.number.toString());
     }
     render(){
         return(

@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
 class Logout extends Component {
     logouthandleClick = () => {
         this.props.onLogout();
-        window.location = '/login';
+        window.location.assign('/login');
     }
     render() {
         return (

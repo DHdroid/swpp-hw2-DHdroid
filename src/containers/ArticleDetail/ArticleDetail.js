@@ -16,7 +16,6 @@ const mapDispatchToProps = dispatch => {
         onGetArticle: (id) => dispatch(actionCreators.getArticle(id)),
         onGetComments: (id) => dispatch(actionCreators.getComments(id)),
         onPostComment: (cm) => dispatch(actionCreators.postComment(cm)),
-        onDeleteComments: (cm) => dispatch(actionCreators.deleteComments(cm)),
         onDeleteArticle: (id) => dispatch(actionCreators.deleteArticle(id))
     }
 }
@@ -49,7 +48,7 @@ class ArticleDetail extends Component {
         window.location = '/articles';
     }
     edithandleClick = () => {
-        window.location = '/articles/'+this.id+'/edit';
+        window.location.assign('/articles/'+this.id+'/edit');
     }
     author = () => {
         let name = 'no name';
@@ -94,7 +93,7 @@ class ArticleDetail extends Component {
                 </table>
                 <p/>
                 {button()}
-                <button id='back-detail-article-button' onClick ={()=>{window.location='/articles'}}>Back</button>
+                <button id='back-detail-article-button' onClick ={()=>{window.location.assign('/articles')}}>Back</button>
                 <h2>- Comments -</h2>
                 <table align='center'>
                     <tr>

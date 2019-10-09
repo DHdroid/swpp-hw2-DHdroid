@@ -27,7 +27,7 @@ class Comment extends Component {
                     <button id="delete-comment-button" onClick={this.deletehandleClick}>delete</button></td>
                 </tr>);
             else
-                return;
+                return; 
         }
         return(
             <table className="Comment" border ='2'>

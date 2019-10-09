@@ -36,7 +36,7 @@ class ArticleList extends Component {
                 <Logout/>
                 <h1>ArticleList</h1>
                 <table border = "1" className = "articles">{articles}</table>
-                <p><button id = "create-article-button" onClick = {()=>{window.location='/articles/create'}}>Create</button></p>
+                <p><button id = "create-article-button" onClick = {()=>{window.location.assign('/articles/create')}}>Create</button></p>
             </div>
         );
     }
