@@ -24,11 +24,14 @@ describe('App',()=>{
             </Provider>
         )
     })
-    spygetlogin = jest.spyOn(actionCreators, 'postArticle')
-        .mockImplementation(()=>{return ()  => {return dispatch => {};}});
-
+    const promise = () => new Promise(resolve =>
+        resolve()
+    );
+    spygetlogin = jest.spyOn(actionCreators, 'getlogin')
+        .mockImplementation(()=>{return ()  => {return promise().then(()=>{}).catch(e=>{}) }});
     it('should render', () => {
-        const component = mount(app);
+        const component = mount(app);    spygetlogin = jest.spyOn(actionCreators, 'postArticle')
+        .mockImplementation(()=>{return ()  => {return promise().then(()=>{}).catch(e=>{}) }});
         expect(component.find('.App').length).toBe(1);
     });
     it('should be redirected', () => {

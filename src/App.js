@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
 }
 class App extends Component {
   componentDidMount() {
-    this.props.onGetLogin().catch(e=>{});
+    this.props.onGetLogin();
   }
   render(){
     //console.log(this.props.iflogin);
