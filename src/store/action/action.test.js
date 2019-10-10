@@ -49,7 +49,7 @@ describe("ActionCreators", () => {
       expect(newState.ar.articles).toEqual([stubArticle]);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   })
   it('should post comment correctly', (done)=> {
     const spy = jest.spyOn(axios, "post").mockImplementation(url => {
@@ -66,7 +66,7 @@ describe("ActionCreators", () => {
       expect(newState.dr.comments).toEqual([stubComment]);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   })
   it('should delete comment correctly', (done)=> {
     const spy = jest.spyOn(axios, "delete").mockImplementation(url => {
@@ -83,7 +83,7 @@ describe("ActionCreators", () => {
       expect(newState.dr.comments).toEqual([]);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   })
   it('should delete article correctly', (done)=> {
     const spy = jest.spyOn(axios, "delete").mockImplementation(url => {
@@ -100,7 +100,7 @@ describe("ActionCreators", () => {
       expect(newState.dr.article).toEqual({});
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   })
   it('should login correctly', (done)=> {
     const spy = jest.spyOn(axios, "patch").mockImplementation(url => {
@@ -117,7 +117,7 @@ describe("ActionCreators", () => {
       expect(newState.lr.login).toEqual(true);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   })
   it('should logout correctly', (done)=> {
     const spy = jest.spyOn(axios, "patch").mockImplementation(url => {
@@ -134,7 +134,7 @@ describe("ActionCreators", () => {
       expect(newState.lr.login).toEqual(false);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   })
   it(`  should fetch articles correctly`, done => {
     const stubArticleList = [stubArticle];
@@ -154,7 +154,7 @@ describe("ActionCreators", () => {
       expect(newState.ar.articles).toBe(stubArticleList);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   });
   it(`  should fetch users correctly`, done => {
     const stubUsers = [stubUser];
@@ -174,7 +174,7 @@ describe("ActionCreators", () => {
       expect(newState.ar.users).toBe(stubUsers);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   });
   it(`  should fetch article correctly`, done => {
     const spy = jest.spyOn(axios, "get").mockImplementation(url => {
@@ -192,7 +192,7 @@ describe("ActionCreators", () => {
       expect(newState.dr.article).toBe(stubArticle);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   });
   it(`  should fetch comments correctly`, done => {
     const stubComments = [stubComment, stubComment2];
@@ -209,11 +209,11 @@ describe("ActionCreators", () => {
 
     store.dispatch(actionCreators.getComments(20)).then(() => {
       const newState = store.getState();
-      console.log(newState.dr);
+      //console.log(newState.dr);
       expect(newState.dr.comments).toEqual([stubComment]);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   });
   it(`should get login correctly`, done => {
     const spy = jest.spyOn(axios, "get").mockImplementation(url => {
@@ -231,7 +231,7 @@ describe("ActionCreators", () => {
       expect(newState.lr.login).toEqual(true);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   });
   it(`should edit article correctly`, done => {
     const spy = jest.spyOn(axios, "put").mockImplementation(url => {
@@ -248,7 +248,7 @@ describe("ActionCreators", () => {
       expect(newState.dr.article).toEqual(stubArticle);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   });
   it(`should edit comment correctly`, done => {
     const spy = jest.spyOn(axios, "put").mockImplementation(url => {
@@ -265,7 +265,7 @@ describe("ActionCreators", () => {
       expect(newState.dr.comments).toEqual([stubComment]);
       expect(spy).toHaveBeenCalledTimes(1);
       done();
-    });
+    }).catch(e=>{});
   });
 
 });

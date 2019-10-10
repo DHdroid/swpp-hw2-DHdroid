@@ -137,7 +137,7 @@ describe('<ArticleEdit/>', () => {
         for(var i=0; i<20; i++) {
             await component.update();
         }
-        console.log(component.debug());
+        //console.log(component.debug());
         const wrapper2 = component.find('#article-title-input');
         const wrapper3 = component.find('#article-content-input');
         wrapper2.simulate('change',{target:{value:'none'}});

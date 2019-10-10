@@ -84,9 +84,9 @@ class ArticleEdit extends Component {
         let titleinput = null;
         let contentinput = null;
         if(this.state.title!==null)
-            titleinput = <p><textarea cols='70' rows='4' id='article-title-input' onChange={this.titlehandleChange}>{this.state.title}</textarea></p>;
+            titleinput = <p><textarea cols='70' rows='4' id='article-title-input' onChange={this.titlehandleChange} value={this.state.title}></textarea></p>;
         if(this.state.content!==null)
-            contentinput = <p><textarea cols='70' rows='4' id='article-content-input' onChange={this.contenthandleChange}>{this.state.content}</textarea></p>;
+            contentinput = <p><textarea cols='70' rows='4' id='article-content-input' onChange={this.contenthandleChange} value={this.state.content}></textarea></p>;
         let view = () => {
                 if(this.state.write) {
                     return(
@@ -100,9 +100,11 @@ class ArticleEdit extends Component {
                 else {
                     return(
                     <table align='center' border='1'>
-                    <tr><td align = 'center' width = '800'><h2 id="article-author">{this.author()}</h2></td></tr>
-                    <tr><td align = 'center' width = '800'><h1 id="article-title">{this.state.title}</h1></td></tr>
-                    <tr><td width = '800' align = 'center'><h3 id="article-content">{this.state.content}</h3></td></tr>
+                        <tbody>
+                            <tr><td align = 'center' width = '800'><h2 id="article-author">{this.author()}</h2></td></tr>
+                            <tr><td align = 'center' width = '800'><h1 id="article-title">{this.state.title}</h1></td></tr>
+                            <tr><td width = '800' align = 'center'><h3 id="article-content">{this.state.content}</h3></td></tr>
+                        </tbody>
                     </table>);
                 }
             }

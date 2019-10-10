@@ -31,11 +31,11 @@ class Comment extends Component {
         }
         return(
             <table className="Comment" border ='2'>
-                <tr>
+                <tbody>
                     <tr><td width='150' align='center'>{this.props.name}</td></tr>
                     <tr><td width='200' align='left'>{this.props.content}</td></tr>
                     {ifauthor()}
-                </tr>
+                </tbody>
             </table>
         );
     }

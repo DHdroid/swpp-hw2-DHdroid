@@ -24,21 +24,19 @@ describe('App',()=>{
             </Provider>
         )
     })
-    const promise = () => new Promise(resolve =>
-        resolve()
-    );
     spygetlogin = jest.spyOn(actionCreators, 'postArticle')
-        .mockImplementation(()=>{return ()  => {return promise().then(()=>{}) }});
+        .mockImplementation(()=>{return ()  => {return dispatch => {};}});
+
     it('should render', () => {
         const component = mount(app);
         expect(component.find('.App').length).toBe(1);
     });
-    it('should be redirected', async () => {
+    it('should be redirected', () => {
         window.location.assign = jest.fn();
         const component = mount(app);
         expect(window.location.assign).toHaveBeenCalledTimes(1);
     })
-    it('should be redirected', async () => {
+    it('should be redirected', () => {
         window.location.assign = jest.fn();
         history.push('/article')
         const component = mount(app2);

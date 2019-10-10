@@ -21,7 +21,7 @@ class ArticleList extends Component {
         this.props.onGetUser();
     }
     render() {
-        const articles = this.props.storedArticles.map((ar)=>{
+        const articles = (<tbody>{this.props.storedArticles.map((ar)=>{
             let names = 'no name';
             this.props.storedUsers.forEach(element => {
                 if(element.id === ar.author_id)
@@ -29,13 +29,13 @@ class ArticleList extends Component {
                     names = element.name;
                 }
             });
-            return(<Article number={ar.id.toString()} title={ar.title} name={names}/>);
-        });
+            return(<tr key={ar.id.toString()}><td><Article number={ar.id.toString()} title={ar.title} name={names}/></td></tr>);
+        })}</tbody>);
         return (
             <div className = "ArticleList" align='center'>
                 <Logout/>
                 <h1>ArticleList</h1>
-                <table border = "1" className = "articles">{articles}</table>
+                <table className = "articles">{articles}</table>
                 <p><button id = "create-article-button" onClick = {()=>{window.location.assign('/articles/create')}}>Create</button></p>
             </div>
         );

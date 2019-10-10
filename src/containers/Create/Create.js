@@ -52,8 +52,8 @@ class Create extends Component {
     }
     
     render() {
-        let inputtitle = <span><p>Title</p><textarea id="article-title-input" onChange={this.thandleChange}>{this.state.title}</textarea></span>;
-        let inputcontent = <span><p>Content</p><textarea id="article-content-input" onChange={this.chandleChange}>{this.state.content}</textarea></span>
+        let inputtitle = <span><p>Title</p><textarea id="article-title-input" onChange={this.thandleChange} value={this.state.title}></textarea></span>;
+        let inputcontent = <span><p>Content</p><textarea id="article-content-input" onChange={this.chandleChange} value={this.state.content}></textarea></span>
         let view = () => {
             if(this.state.write) {
                 return(
@@ -66,9 +66,11 @@ class Create extends Component {
             else {
                 return(
                     <table align='center' border='1'>
-                    <tr><td align = 'center' width = '800'><h2 id="article-author">Software Lover</h2></td></tr>
-                    <tr><td align = 'center' width = '800'><h1 id="article-title">{this.state.title}</h1></td></tr>
-                    <tr><td width = '800' align = 'center'><h3 id="article-content">{this.state.content}</h3></td></tr>
+                        <tbody>
+                            <tr><td align = 'center' width = '800'><h2 id="article-author">Software Lover</h2></td></tr>
+                            <tr><td align = 'center' width = '800'><h1 id="article-title">{this.state.title}</h1></td></tr>
+                            <tr><td width = '800' align = 'center'><h3 id="article-content">{this.state.content}</h3></td></tr>
+                        </tbody>
                     </table>
                 );
             }

@@ -68,7 +68,7 @@ describe('<ArticleList/>', () => {
     it('should show all the articles', ()=>{
         const component = mount(articlelist);
         const wrapper = component.find('.Article');
-        console.log(wrapper.debug());
+        //console.log(wrapper.debug());
         expect(wrapper.length).toBe(1);
     });
     it('should move to create page when button is pressed',()=> {

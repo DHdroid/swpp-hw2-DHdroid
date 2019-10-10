@@ -20,10 +20,10 @@ const mapDispatchToProps = dispatch => {
 }
 class App extends Component {
   componentDidMount() {
-    this.props.onGetLogin();
+    this.props.onGetLogin().catch(e=>{});
   }
   render(){
-    console.log(this.props.iflogin);
+    //console.log(this.props.iflogin);
     if(this.props.iflogin===false&&window.location.toString().split('/').pop()!=='login') {
       window.location.assign('/login'); 
     }

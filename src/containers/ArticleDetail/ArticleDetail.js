@@ -42,7 +42,7 @@ class ArticleDetail extends Component {
         })
     }
     deletehandleClick = () => {
-        console.log(this.props.storedComments)
+        //console.log(this.props.storedComments)
         // this.props.onDeleteComments(this.props.storedComments.filter((cm)=>{return cm.article_id==this.id})); (fix it later)
         this.props.onDeleteArticle(this.id); 
         window.location = '/articles';
@@ -67,7 +67,7 @@ class ArticleDetail extends Component {
                     name = element.name;
                 }
             });
-            return <div><Comment article_id={this.id} id={cm.id} author_id={cm.author_id} name={name} content={cm.content}/><p/></div>
+            return <div key={cm.id.toString()}><Comment article_id={this.id} id={cm.id} author_id={cm.author_id} name={name} content={cm.content}/><p/></div>
         });
         let button = () => {
             if(this.props.storedArticle.author_id==1)
@@ -87,19 +87,23 @@ class ArticleDetail extends Component {
             <div className="ArticleDetail" align='center'>
                 <Logout/>
                 <table align='center' border='1'>
+                    <tbody>
                     <tr><td align = 'center' width = '800'><h2 id="article-author">{this.author()}</h2></td></tr>
                     <tr><td align = 'center' width = '800'><h1 id="article-title">{this.props.storedArticle.title}</h1></td></tr>
                     <tr><td width = '800' align = 'center'><h3 id="article-content">{this.props.storedArticle.content}</h3></td></tr>
+                    </tbody>
                 </table>
                 <p/>
                 {button()}
                 <button id='back-detail-article-button' onClick ={()=>{window.location.assign('/articles')}}>Back</button>
                 <h2>- Comments -</h2>
                 <table align='center'>
+                    <tbody>
                     <tr>
                         <td><input id='new-comment-content-input' onChange = {this.shandleChange} value={this.state.content}/></td>
                         <td><button id='confirm-create-comment-button' disabled = {!this.state.content} onClick = {this.shandleClick}>confirm</button></td>
                     </tr>
+                    </tbody>
                 </table>
                 <p/>
                 {comments}
