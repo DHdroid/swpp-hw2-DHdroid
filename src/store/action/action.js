@@ -1,9 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-import {push} from 'connected-react-router';
-import { tsDeclareFunction } from '@babel/types';
-
 export const getArticles_ = (articles) => {
     return {type: actionTypes.GET_ALL_ARTICLE, articles:articles}
 };
@@ -127,21 +124,6 @@ export const deleteArticle = (id) => {
     return dispatch => {
         return axios.delete('/api/articles/'+id)
             .then(res=>{dispatch(deleteArticle_());})   
-    }
-}
-
-
-export const deleteComments = (cm) => {
-    console.log(cm)       
-    cm.forEach(element=> {
-        axios.delete('/api/comments/'+element.id)
-    })
-    return deleteComments_();
-}
-
-export const deleteComments_ = () => {
-    return dispatch => {
-        return {type:actionTypes.DELETE_COMMENTS}
     }
 }
 

@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/action/index'
 import Logout from '../../components/Logout/Logout'
-import { throwStatement } from '@babel/types';
-import { of } from 'rxjs';
 const mapStateToProps = state => {
     return {
         storedArticle:state.dr.article,
@@ -24,12 +22,14 @@ class ArticleEdit extends Component {
         write: true
     }
     id = this.props.match.params.id;
-    componentDidMount() {
-        this.props.onGetArticle(this.props.match.params.id).then(res=>this.setState({
+    async componentDidMount() {
+        await this.props.onGetArticle(this.props.match.params.id).then();
+        await this.setState({
+            ...this.state,
             title:this.props.storedArticle.title,
             content:this.props.storedArticle.content
-        }));
-        this.props.onGetUser();
+        });
+        await this.props.onGetUser();
     }
     titlehandleChange = (t) => {
         this.setState({
@@ -59,16 +59,16 @@ class ArticleEdit extends Component {
         if(this.state.title!==this.props.storedArticle.title||this.state.content!==this.props.storedArticle.content)
         {
             if(confirm("Are you sure? The change will be lost")===true) { //eslint-disable-line
-                window.location = '/articles/'+this.id;
+                window.location.assign('/articles/'+this.id);
             }
         }
         else {
-            window.location = '/articles/'+this.id;
+            window.location.assign('/articles/'+this.id);
         }
     }
     confirmhandleClick = (c) => {
         this.props.onEditArticle({...this.props.storedArticle, title:this.state.title, content:this.state.content});
-        window.location = '/articles/'+this.id;
+        window.location.assign('/articles/'+this.id);
     }
     author = () => {
         let name = 'no name';

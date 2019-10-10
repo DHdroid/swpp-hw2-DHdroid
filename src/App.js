@@ -1,4 +1,3 @@
-import React from 'react';
 import Login from './components/Login/Login';
 import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
 import './App.css';
@@ -7,6 +6,7 @@ import Create from './containers/Create/Create';
 import ArticleDetail from './containers/ArticleDetail/ArticleDetail';
 import ArticleEdit from './containers/ArticleEdit/ArticleEdit';
 import { connect } from 'react-redux';
+import React, {Component} from 'react';
 import * as actionCreators from './store/action/index'
 const mapStateToProps = state => {
   return {
@@ -18,32 +18,34 @@ const mapDispatchToProps = dispatch => {
       onGetLogin: () => dispatch(actionCreators.getlogin())
   }
 }
-function App(props) {
-  window.onload = function() {
-    props.onGetLogin();
+class App extends Component {
+  componentDidMount() {
+    this.props.onGetLogin();
   }
-  console.log(props.iflogin)
-  if(props.iflogin===false&&window.location.toString().split('/').pop()!=='login') {
-    window.location = '/login';
+  render(){
+    console.log(this.props.iflogin);
+    if(this.props.iflogin===false&&window.location.toString().split('/').pop()!=='login') {
+      window.location.assign('/login'); 
+    }
+    else if(this.props.iflogin===true&&window.location.toString().split('/').pop()==='login') {
+      window.location.assign('/articles');
+    }
+    return (
+      <BrowserRouter history={this.props.history}>
+        <div className="App">
+          <Switch>
+            <Route path='/login' exact component={Login}/>
+            <Redirect exact from='/' to='/login'/>
+            <Route path='/articles' exact component={ArticleList}/>
+            <Route path='/articles/create' exact component={Create}/>
+            <Route path='/articles/:id' exact component={ArticleDetail}/>
+            <Route path='/articles/:id/edit' exact component={ArticleEdit}/>
+            <Route path='/'/>
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
   }
-  else if(props.iflogin===true&&window.location.toString().split('/').pop()==='login') {
-    window.location = '/articles';
-  }
-  return (
-    <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route path='/login' exact component={Login}/>
-          <Redirect exact from='/' to='/login'/>
-          <Route path='/articles' exact component={ArticleList}/>
-          <Route path='/articles/create' exact component={Create}/>
-          <Route path='/articles/:id' exact component={ArticleDetail}/>
-          <Route path='/articles/:id/edit' exact component={ArticleEdit}/>
-          <Route render={()=> window.location ='/'}/>
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

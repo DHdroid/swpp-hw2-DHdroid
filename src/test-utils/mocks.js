@@ -1,8 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';                                           
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
-import { findAllByTitle } from '@testing-library/dom';
 
 
 const getArticleReducer = jest.fn(

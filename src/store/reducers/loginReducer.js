@@ -1,5 +1,4 @@
 import * as actionTypes from '../action/actionTypes';
-import { setState } from 'expect/build/jestMatchersObject';
 const initialState = {
     login:null
 }

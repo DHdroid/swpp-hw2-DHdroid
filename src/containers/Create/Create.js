@@ -38,11 +38,11 @@ class Create extends Component {
         })
     }
     bhandleClick = () => {
-        window.location = '/articles';
+        window.location.assign('/articles');
     }
     chandleClick = () => {
         this.props.onPostArticle({title:this.state.title, content:this.state.content, author_id:1})
-            .then(res=>window.location = '/articles/'+this.props.storedid);
+            .then(res=>window.location.assign('/articles/'+this.props.storedid));
     }
     writehandleClick = (c) => {
         this.setState({
@@ -79,8 +79,8 @@ class Create extends Component {
             {view()}
             <p></p><button id="back-create-article-button" onClick={this.bhandleClick}>back</button><p/>
             <button id="confirm-create-article-button" disabled ={!this.state.title||!this.state.content} onClick={this.chandleClick} disabled={!this.state.title||!this.state.content}>confirm</button><p/>
-            <button id="preview-tab-article-button" onClick={this.previewhandleClick}>preiew</button><p/>
-            <button id="write-tab-article-button" onClick={this.writehandleClick}>write</button><p/>
+            <button id="preview-tab-button" onClick={this.previewhandleClick}>preiew</button><p/>
+            <button id="write-tab-button" onClick={this.writehandleClick}>write</button><p/>
         </div>
         );
     }

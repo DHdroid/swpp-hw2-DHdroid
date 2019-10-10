@@ -8,7 +8,6 @@ export {
     deleteComment,
     editComment,
     deleteArticle,
-    deleteComments,
     editArticle,
     login,
     logout,
