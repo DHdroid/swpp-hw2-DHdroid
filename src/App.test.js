@@ -30,8 +30,7 @@ describe('App',()=>{
     spygetlogin = jest.spyOn(actionCreators, 'getlogin')
         .mockImplementation(()=>{return ()  => {return promise().then(()=>{}).catch(e=>{}) }});
     it('should render', () => {
-        const component = mount(app);    spygetlogin = jest.spyOn(actionCreators, 'postArticle')
-        .mockImplementation(()=>{return ()  => {return promise().then(()=>{}).catch(e=>{}) }});
+        const component = mount(app);
         expect(component.find('.App').length).toBe(1);
     });
     it('should be redirected', () => {
